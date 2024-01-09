@@ -343,6 +343,7 @@ def plot_spectra(*analysis_results, **kwargs) -> plt.Figure:
                     upper_error=positive_error,
                     lower_error=negative_error,
                     contour_color=color_contour[color_itr],
+                    out_file=outfile,
                     label=label,
                 )
 
