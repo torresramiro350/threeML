@@ -1,11 +1,9 @@
 from dataclasses import dataclass, field
-from enum import Enum, Flag
+from enum import Enum
 from typing import Any, Dict, List, Optional
-import numpy as np
-import matplotlib.pyplot as plt
-from omegaconf import II, MISSING, SI, OmegaConf
 
-# type checking matplotlib colormaps
+import matplotlib.pyplot as plt
+
 MPLCmap = Enum("MPLCmap", zip(plt.colormaps(), plt.colormaps()))
 
 
@@ -47,7 +45,6 @@ class FermiSpectrumPlot:
     data_mpl_kwargs: Optional[Dict[str, Any]] = None
     model_mpl_kwargs: Optional[Dict[str, Any]] = None
     background_mpl_kwargs: Optional[Dict[str, Any]] = None
-
 
 
 @dataclass
@@ -103,14 +100,13 @@ class LegendStyle:
 
 @dataclass
 class PointSourcePlot:
-
     fit_cmap: MPLCmap = MPLCmap.Set1
     contour_cmap: MPLCmap = MPLCmap.Set1
     bayes_cmap: MPLCmap = MPLCmap.Set1
-    plot_style: PlotStyle = PlotStyle()
-    contour_style: ContourStyle = ContourStyle()
+    plot_style: PlotStyle = field(default_factory=lambda: PlotStyle())
+    contour_style: ContourStyle = field(default_factory=lambda: ContourStyle())
     show_legend: bool = True
-    legend_style: LegendStyle = LegendStyle()
+    legend_style: LegendStyle = field(default_factory=lambda: LegendStyle())
     flux_unit: str = "1/(keV s cm2)"
     emin: float = 10.0
     emax: float = 1e4
@@ -130,10 +126,11 @@ class ResidualPlot:
 class GenericPlotting:
     use_threeml_style: bool = True
     mplstyle: str = "threeml.mplstyle"
-    residual_plot: ResidualPlot = ResidualPlot()
+    residual_plot: ResidualPlot = field(default_factory=lambda: ResidualPlot())
 
 
 @dataclass
 class ModelPlotting:
-
-    point_source_plot: PointSourcePlot = PointSourcePlot()
+    point_source_plot: PointSourcePlot = field(
+        default_factory=lambda: PointSourcePlot()
+    )

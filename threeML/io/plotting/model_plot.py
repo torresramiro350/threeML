@@ -710,7 +710,7 @@ class SpectralContourPlot:
         upper_error=None,
         lower_error=None,
         contour_color=None,
-        out_file: str = None,
+        out_file: str | None = None,
         label="model",
     ):
         self._ax.plot(
@@ -732,9 +732,9 @@ class SpectralContourPlot:
 
             np.savez(
                 out_file,
-                energy_range=energy_range,
-                lower_error=lower_error,
-                upper_error=upper_error,
+                energy_range=energy_range.value,
+                lower_error=lower_error.value,
+                upper_error=upper_error.value,
             )
             # with open(out_file, 'w') as f:
             #     print(f"{energy_range} {lower_error} {upper_error}", file=f)
