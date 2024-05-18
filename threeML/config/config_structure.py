@@ -45,16 +45,18 @@ class Interface:
 
 @dataclass
 class Config:
-    logging: Logging = field(default_factory=Logging)
-    parallel: Parallel = field(default_factory=Parallel)
-    interface: Interface = field(default_factory=Interface)
-    plugins: Plugins = field(default_factory=Plugins)
-    time_series: TimeSeries = field(default_factory=TimeSeries)
-    mle: MLEDefault = field(default_factory=MLEDefault)
-    bayesian: BayesianDefault = field(default_factory=BayesianDefault)
-    plotting: GenericPlotting = field(default_factory=GenericPlotting)
-    model_plot: ModelPlotting = field(default_factory=ModelPlotting)
-    point_source: PointSourceDefaults = field(default_factory=PointSourceDefaults)
+    logging: Logging = field(default_factory=lambda: Logging())
+    parallel: Parallel = field(default_factory=lambda: Parallel())
+    interface: Interface = field(default_factory=lambda: Interface())
+    plugins: Plugins = field(default_factory=lambda: Plugins())
+    time_series: TimeSeries = field(default_factory=lambda: TimeSeries())
+    mle: MLEDefault = field(default_factory=lambda: MLEDefault())
+    bayesian: BayesianDefault = field(default_factory=lambda: BayesianDefault())
+    plotting: GenericPlotting = field(default_factory=lambda: GenericPlotting())
+    model_plot: ModelPlotting = field(default_factory=lambda: ModelPlotting())
+    point_source: PointSourceDefaults = field(
+        default_factory=lambda: PointSourceDefaults()
+    )
 
     LAT: PublicDataServer = PublicDataServer(
         public_ftp_location="ftp://heasarc.nasa.gov/fermi/data",
@@ -65,5 +67,4 @@ class Config:
         public_ftp_location="ftp://heasarc.nasa.gov/fermi/data",
         public_http_location="https://heasarc.gsfc.nasa.gov/FTP/fermi/data/gbm",
     )
-    catalogs: Catalogs = Catalogs()
     catalogs: Catalogs = Catalogs()
