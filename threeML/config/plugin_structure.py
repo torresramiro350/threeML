@@ -12,6 +12,8 @@ from .plotting_structure import (
 class OGIP:
     fit_plot: BinnedSpectrumPlot = field(default_factory=lambda: BinnedSpectrumPlot())
     data_plot: DataHistPlot = field(default_factory=lambda: DataHistPlot())
+    fit_plot: BinnedSpectrumPlot = field(default_factory=lambda: BinnedSpectrumPlot())
+    data_plot: DataHistPlot = field(default_factory=lambda: DataHistPlot())
     response_cmap: MPLCmap = MPLCmap.viridis
     response_zero_color: str = "k"
 

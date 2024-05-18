@@ -68,3 +68,30 @@ class Config:
         public_http_location="https://heasarc.gsfc.nasa.gov/FTP/fermi/data/gbm",
     )
     catalogs: Catalogs = Catalogs()
+    logging: Logging = field(default_factory=lambda: Logging())
+    parallel: Parallel = field(default_factory=lambda: Parallel())
+    interface: Interface = field(default_factory=lambda: Interface())
+    plugins: Plugins = field(default_factory=lambda: Plugins())
+    time_series: TimeSeries = field(default_factory=lambda: TimeSeries())
+    mle: MLEDefault = field(default_factory=lambda: MLEDefault())
+    bayesian: BayesianDefault = field(default_factory=lambda: BayesianDefault())
+    plotting: GenericPlotting = field(default_factory=lambda: GenericPlotting())
+    model_plot: ModelPlotting = field(default_factory=lambda: ModelPlotting())
+    point_source: PointSourceDefaults = field(
+        default_factory=lambda: PointSourceDefaults()
+    )
+
+    LAT: PublicDataServer = field(
+        default_factory=lambda: PublicDataServer(
+            public_ftp_location="ftp://heasarc.nasa.gov/fermi/data",
+            public_http_location="https://heasarc.gsfc.nasa.gov/FTP/fermi/data/lat",
+            query_form="https://fermi.gsfc.nasa.gov/cgi-bin/ssc/LAT/LATDataQuery.cgi",
+        )
+    )
+    GBM: PublicDataServer = field(
+        default_factory=lambda: PublicDataServer(
+            public_ftp_location="ftp://heasarc.nasa.gov/fermi/data",
+            public_http_location="https://heasarc.gsfc.nasa.gov/FTP/fermi/data/gbm",
+        )
+    )
+    catalogs: Catalogs = field(default_factory=lambda: Catalogs())
