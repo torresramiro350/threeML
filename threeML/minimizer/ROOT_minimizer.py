@@ -46,6 +46,10 @@ _hesse_status_translation = {
 # It seems ROOT doesn't support subclassing some classes. One of these include
 # IMultiGenFunction.
 def create_function_wrapper(python_function, dimensions):
+    """
+    ROOT.Math.Functor directly wraps a Python callable
+    and handles the interface requirements automatically
+    """
     functor = ROOT.Math.Functor(python_function, dimensions)
     ROOT.SetOwnership(functor, False)
 

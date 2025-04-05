@@ -172,7 +172,7 @@ class BayesianDefault:
         }
     )
 
-    corner_style: CornerStyle = field(default_factory=CornerStyle)
+    corner_style: CornerStyle = field(default_factory=lambda: CornerStyle())
 
 
 @dataclass
